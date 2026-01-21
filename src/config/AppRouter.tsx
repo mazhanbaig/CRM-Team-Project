@@ -3,7 +3,6 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
-import Dashboard from "../pages/Dashboard";
 import ViewClientsPage from "../pages/ViewClientsPage";
 import AddClientPage from "../pages/AddClientPage";
 import ViewClient from "../pages/ViewClient";
@@ -13,17 +12,18 @@ import ViewLead from "../pages/ViewLead";
 import ViewProjects from "../pages/ViewProjects";
 import AddProject from "../pages/AddProject";
 import ViewProject from "../pages/ViewProject";
+import Dashboard from "../pages/Dashboard";
 export default function AppRouter() {
     return (
         <BrowserRouter>
             <Routes>
                 {/* Public */}
-                <Route path="/" element={<Home />} />
+                {/* <Route path="/" element={<Home />} /> */}
                 <Route path="/about" element={<About />} />
                 <Route path="/auth/login" element={<Login />} />
                 <Route path="/auth/signup" element={<Signup />} />
 
-                <Route path="/dashboard/:userId" element={<Dashboard />} />
+                <Route path="/" element={<Dashboard />} />
 
                 {/* Clients */}
                 <Route path="clients" element={<ViewClientsPage />} />
