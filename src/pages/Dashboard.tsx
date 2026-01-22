@@ -15,6 +15,7 @@ import {
   AlertCircle,
   Star
 } from "lucide-react"
+import React from "react"
 
 
 export default function AdminDashboardPage() {
@@ -81,7 +82,15 @@ export default function AdminDashboardPage() {
       onClick: () => console.log("Add lead")
     },
     {
-      label: "Schedule Meeting",
+      label: "Add New Client",
+      description: "Create client",
+      icon: <UserPlus className="h-5 w-5" />,
+      bgColor: "bg-emerald-50",
+      textColor: "text-emerald-600",
+      onClick: () => console.log("Add lead")
+    },
+    {
+      label: "Schedule Dates",
       description: "Plan follow-up",
       icon: <Calendar className="h-5 w-5" />,
       bgColor: "bg-blue-50",
@@ -96,30 +105,6 @@ export default function AdminDashboardPage() {
       textColor: "text-purple-600",
       onClick: () => console.log("Create project")
     },
-    {
-      label: "Send Proposal",
-      description: "To client",
-      icon: <FileText className="h-5 w-5" />,
-      bgColor: "bg-emerald-50",
-      textColor: "text-emerald-600",
-      onClick: () => console.log("Send proposal")
-    },
-    {
-      label: "Generate Report",
-      description: "Analytics",
-      icon: <BarChart3 className="h-5 w-5" />,
-      bgColor: "bg-amber-50",
-      textColor: "text-amber-600",
-      onClick: () => console.log("Generate report")
-    },
-    {
-      label: "Team Chat",
-      description: "Collaborate",
-      icon: <Users className="h-5 w-5" />,
-      bgColor: "bg-indigo-50",
-      textColor: "text-indigo-600",
-      onClick: () => console.log("Team chat")
-    }
   ]
 
   return (
@@ -217,6 +202,42 @@ export default function AdminDashboardPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column */}
           <div className="lg:col-span-2 space-y-8">
+            {/* Quick Actions - Balanced Compact */}
+            <div className="bg-white rounded-xl border border-gray-100 p-5 shadow-lg shadow-black/5">
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg">
+                    <Zap className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-lg font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                      Quick Actions
+                    </h2>
+                    <p className="text-sm text-gray-600">Frequent tasks at a glance</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-3 gap-3">
+                {quickActions.map((action, index) => (
+                  <button
+                    key={index}
+                    onClick={action.onClick}
+                    className="flex flex-row items-center p-3 rounded-xl border border-gray-200 hover:border-cyan-300 hover:shadow-sm transition-all duration-200 group cursor-pointer bg-white hover:bg-cyan-50/30"
+                  >
+                    <div className={`p-2 rounded-lg ${action.bgColor} mr-3`}>
+                      <div className={` ${action.textColor}`}>
+                        {action.icon}
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-start flex-1">
+                      <h4 className="font-semibold text-gray-900 text-sm mb-0.5">{action.label}</h4>
+                      <p className="text-xs text-gray-500 text-left">{action.description}</p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
             <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-lg shadow-black/5">
               <div className="flex items-center justify-between mb-4">
                 <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
@@ -249,7 +270,7 @@ export default function AdminDashboardPage() {
                 ))}
               </div>
             </div>
-            {/*Clients */}
+            {/* Projects */}
             <div className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg shadow-black/5">
               <div className="flex items-center justify-between ">
                 <div>
