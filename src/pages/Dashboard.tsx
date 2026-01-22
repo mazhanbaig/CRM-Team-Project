@@ -19,13 +19,114 @@ import {
 
 export default function AdminDashboardPage() {
 
+  // Add this data array at the top
+  const statsData = [
+    {
+      title: "Total Leads",
+      value: "156",
+      change: "+12%",
+      icon: <Users className="h-6 w-6" />,
+      accent: "bg-cyan-100",
+      description: "This month"
+    },
+    {
+      title: "Active Projects",
+      value: "24",
+      change: "+3",
+      icon: <FolderOpen className="h-6 w-6" />,
+      accent: "bg-blue-100",
+      description: "In progress"
+    },
+    {
+      title: "Total Clients",
+      value: "92%",
+      change: "+5%",
+      icon: <TrendingUp className="h-6 w-6" />,
+      accent: "bg-emerald-100",
+      description: "Success rate"
+    },
+    {
+      title: "Revenue",
+      value: "$48.5K",
+      change: "+15%",
+      icon: <BarChart3 className="h-6 w-6" />,
+      accent: "bg-green-100",
+      description: "Monthly"
+    },
+    {
+      title: "Tasks Pending",
+      value: "18",
+      change: "-4",
+      icon: <CheckCircle className="h-6 w-6" />,
+      accent: "bg-amber-100",
+      description: "To complete"
+    },
+    {
+      title: "Meetings",
+      value: "32",
+      change: "+8",
+      icon: <Calendar className="h-6 w-6" />,
+      accent: "bg-purple-100",
+      description: "This week"
+    }
+  ]
 
+  const quickActions = [
+    {
+      label: "Add New Lead",
+      description: "Create contact",
+      icon: <UserPlus className="h-5 w-5" />,
+      bgColor: "bg-cyan-50",
+      textColor: "text-cyan-600",
+      onClick: () => console.log("Add lead")
+    },
+    {
+      label: "Schedule Meeting",
+      description: "Plan follow-up",
+      icon: <Calendar className="h-5 w-5" />,
+      bgColor: "bg-blue-50",
+      textColor: "text-blue-600",
+      onClick: () => console.log("Schedule")
+    },
+    {
+      label: "Create Project",
+      description: "New initiative",
+      icon: <FolderOpen className="h-5 w-5" />,
+      bgColor: "bg-purple-50",
+      textColor: "text-purple-600",
+      onClick: () => console.log("Create project")
+    },
+    {
+      label: "Send Proposal",
+      description: "To client",
+      icon: <FileText className="h-5 w-5" />,
+      bgColor: "bg-emerald-50",
+      textColor: "text-emerald-600",
+      onClick: () => console.log("Send proposal")
+    },
+    {
+      label: "Generate Report",
+      description: "Analytics",
+      icon: <BarChart3 className="h-5 w-5" />,
+      bgColor: "bg-amber-50",
+      textColor: "text-amber-600",
+      onClick: () => console.log("Generate report")
+    },
+    {
+      label: "Team Chat",
+      description: "Collaborate",
+      icon: <Users className="h-5 w-5" />,
+      bgColor: "bg-indigo-50",
+      textColor: "text-indigo-600",
+      onClick: () => console.log("Team chat")
+    }
+  ]
 
   return (
-    <div  className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
-      
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
+
       <main className="flex-1 p-4 sm:p-6 lg:p-8">
-        
+
         {/* Welcome Section */}
         <div className="mb-10">
           {/* Minimal Dashboard Tag */}
@@ -44,21 +145,20 @@ export default function AdminDashboardPage() {
                 {/* Blue/Cyan Strip */}
                 <div className="relative">
                   <div className="w-3 h-10 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full shadow-lg shadow-cyan-400/30"></div>
-                  <Sparkles className="absolute -top-1 -right-1 h-4 w-4 text-cyan-400 animate-pulse" />
                 </div>
 
                 {/* Organization Text */}
                 <div className="relative">
                   <h1 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent bg-[length:200%] animate-gradient">
-                    {"Zyra Academy"}
+                    Cliento
                   </h1>
-                  <div className="flex items-center gap-3 -mt-3 -ml-7">
-                    <Shield className="h-4 w-4 text-cyan-500" />
-                    <p className="text-gray-600 text-sm relative top-[6px]">
+                  <div className="flex items-center gap-3 ">
+                    <Shield className="h-4 w-4 text-cyan-500 mt-2" />
+                    <p className="text-gray-600 text-sm mt-2">
                       Welcome, <span className="font-semibold text-gray-900">{"Administrator"}</span>
                     </p>
-                    <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
-                    <span className="text-xs font-medium px-2 py-1 bg-cyan-100 text-cyan-700 rounded-xl">
+                    <div className="w-1 h-1 bg-gray-300 rounded-full mt-2"></div>
+                    <span className="text-xs font-medium px-2 py-1 bg-cyan-100 text-cyan-700 rounded-xl mt-2">
                       Admin
                     </span>
                   </div>
@@ -84,7 +184,7 @@ export default function AdminDashboardPage() {
         {/* Stats Grid */}
         {/* Animated Stats Grid - Rectangular Bars */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
-          {[].map((stat: any, idx: any) => (
+          {statsData.map((stat: any, idx: any) => (
             <div key={idx} className="relative group">
               {/* Thin rectangular card */}
               <div
@@ -117,48 +217,93 @@ export default function AdminDashboardPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left Column */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Quick Actions - Moved to top of left column */}
-            <div className="bg-white rounded-xl border border-gray-100 px-6 pt-3 pb-4 shadow-lg shadow-black/5">
+            <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-lg shadow-black/5">
               <div className="flex items-center justify-between mb-4">
                 <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                  Today's Activity
+                  Recent Activity
                 </h2>
                 <button className="text-sm font-medium text-cyan-600 hover:text-cyan-700 flex items-center gap-2">
-                  View All
+                  See All
                   <ChevronRight className="h-4 w-4" />
                 </button>
               </div>
 
-              <div className="grid grid-col-2 sm:grid-cols-3 items-center gap-2">
-                {[].map((action: any, index: number) => (
-                  <div
-                    key={index}
-                    onClick={action.onClick}
-                    className="p-2 rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all group cursor-pointer"
-                  >
+              <div className="space-y-4">
+                {[
+                  { id: 1, user: "TechCorp Inc.", action: "signed contract", time: "10 min ago", icon: <CheckCircle className="h-4 w-4 text-green-600" /> },
+                  { id: 2, user: "Sarah Johnson", action: "requested proposal", time: "25 min ago", icon: <FileText className="h-4 w-4 text-blue-600" /> },
+                ].map((activity) => (
+                  <div key={activity.id} className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors">
                     <div className="flex items-center gap-3">
-                      <div className={`p-2 rounded-lg ${action.bgColor}`}>
-                        <div className={action.textColor}>
-                          {action.icon}
-                        </div>
+                      <div className="p-2 bg-gray-100 rounded-lg">
+                        {activity.icon}
                       </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900 truncate">{action.label}</h4>
-                        <div className="flex items-center justify-between text-xs text-gray-500">
-                          <span>{action.description}</span>
-                          <ChevronRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </div>
+                      <div>
+                        <p className="font-medium text-gray-900">
+                          <span className="font-semibold">{activity.user}</span> {activity.action}
+                        </p>
+                        <p className="text-sm text-gray-500">{activity.time}</p>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+            {/*Clients */}
+            <div className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg shadow-black/5">
+              <div className="flex items-center justify-between ">
+                <div>
+                  <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                    Active Projects
+                  </h2>
+                  <p className="text-sm text-gray-600 mb-3">Track ongoing initiatives and progress</p>                </div>
+
+                <button
+                  className="text-sm font-medium text-cyan-600 hover:text-cyan-700 flex items-center gap-2"
+                >
+                  View all
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+
+              {[
+                {
+                  id: 1,
+                  title: "Parent-Teacher Meeting",
+                  date: "28 Feb",
+                  time: "9AM-3PM",
+                  type: "ptm",
+                  icon: <Users className="h-4 w-4 text-white" />
+                },
+
+              ].map((event, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-between  p-3 rounded-xl border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 cursor-pointer group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 text-lg sm:text-xl bg-transparent rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center justify-center font-semibold shadow-md">
+                      {event.date.split(' ')[0]}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-semibold text-gray-900 text-sm">{event.title}</span>
+                      <span className="text-xs text-gray-500">
+                        {event.date} • {event.time}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-cyan-600 transition-colors" />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Right Column - Desktop Only */}
           <div className="space-y-8">
-            {/* Upcoming Events */}
+            {/* Dates Upcoming */}
             <div className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg shadow-black/5">
               <div className="flex items-center justify-between ">
                 <div>
@@ -185,26 +330,113 @@ export default function AdminDashboardPage() {
                   type: "ptm",
                   icon: <Users className="h-4 w-4 text-white" />
                 },
-                {
-                  id: 2,
-                  title: "Annual Science Fair",
-                  date: "15 Mar",
-                  time: "10AM-4PM",
-                  type: "fair",
-                  icon: <Award className="h-4 w-4 text-white" />
-                },
-                {
-                  id: 3,
-                  title: "Faculty Development",
-                  date: "22 Mar",
-                  time: "2PM-5PM",
-                  type: "workshop",
-                  icon: <GraduationCap className="h-4 w-4 text-white" />
-                }
+
               ].map((event, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-between  p-3 rounded-xl border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 cursor-pointer group"
+                  className="flex items-center justify-between  px-3 py-2 rounded-xl border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 cursor-pointer group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 text-lg sm:text-xl bg-transparent rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center justify-center font-semibold shadow-md">
+                      {event.date.split(' ')[0]}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-semibold text-gray-900 text-sm">{event.title}</span>
+                      <span className="text-xs text-gray-500">
+                        {event.date} • {event.time}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-cyan-600 transition-colors" />
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/*Clients */}
+            <div className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg shadow-black/5">
+              <div className="flex items-center justify-between ">
+                <div>
+                  <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                    Trusted Partners
+                  </h2>
+                  <p className="text-sm text-gray-600 mb-3">Innovators who choose our platform</p>
+                </div>
+
+                <button
+                  className="text-sm font-medium text-cyan-600 hover:text-cyan-700 flex items-center gap-2"
+                >
+                  View all
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+
+              {[
+                {
+                  id: 1,
+                  title: "Parent-Teacher Meeting",
+                  date: "28 Feb",
+                  time: "9AM-3PM",
+                  type: "ptm",
+                  icon: <Users className="h-4 w-4 text-white" />
+                },
+
+              ].map((event, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-between px-3 py-2 rounded-xl border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 cursor-pointer group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 text-lg sm:text-xl bg-transparent rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center justify-center font-semibold shadow-md">
+                      {event.date.split(' ')[0]}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-semibold text-gray-900 text-sm">{event.title}</span>
+                      <span className="text-xs text-gray-500">
+                        {event.date} • {event.time}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-cyan-600 transition-colors" />
+                  </div>
+                </div>
+              ))}
+            </div>
+            {/*Clients */}
+            <div className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg shadow-black/5">
+              <div className="flex items-center justify-between ">
+                <div>
+                  <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                    Hot Leads
+                  </h2>
+                  <p className="text-sm text-gray-600 mb-3">High-priority leads needing attention</p>
+                </div>
+
+                <button
+                  className="text-sm font-medium text-cyan-600 hover:text-cyan-700 flex items-center gap-2"
+                >
+                  View all
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+
+              {[
+                {
+                  id: 1,
+                  title: "Parent-Teacher Meeting",
+                  date: "28 Feb",
+                  time: "9AM-3PM",
+                  type: "ptm",
+                  icon: <Users className="h-4 w-4 text-white" />
+                },
+
+              ].map((event, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-between px-3 py-2 rounded-xl border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 cursor-pointer group"
                 >
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 text-lg sm:text-xl bg-transparent rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center justify-center font-semibold shadow-md">
@@ -230,25 +462,3 @@ export default function AdminDashboardPage() {
     </div>
   )
 }
-
-
-// Helper functions (add these inside your dashboard component)
-const getPriorityColor = (priority: string, type: 'border' | 'bg' = 'border') => {
-  const colors = {
-    critical: type === 'border' ? 'border-red-200 bg-red-50 text-red-700' : 'bg-red-500',
-    high: type === 'border' ? 'border-amber-200 bg-amber-50 text-amber-700' : 'bg-amber-500',
-    normal: type === 'border' ? 'border-blue-200 bg-blue-50 text-blue-700' : 'bg-blue-500',
-    low: type === 'border' ? 'border-slate-200 bg-slate-50 text-slate-700' : 'bg-slate-500',
-  };
-  return colors[priority as keyof typeof colors] || colors.normal;
-};
-
-const getTargetColor = (target: string) => {
-  const colors = {
-    students: 'border-teal-200 bg-teal-50 text-teal-700',
-    teachers: 'border-violet-200 bg-violet-50 text-violet-700',
-    'section-Head': 'border-pink-200 bg-pink-50 text-pink-700',
-    all: 'border-cyan-200 bg-cyan-50 text-cyan-700',
-  };
-  return colors[target as keyof typeof colors] || colors.all;
-};
