@@ -1,366 +1,254 @@
 import {
-  Users,
-  Briefcase,
-  TrendingUp,
-  FileText,
-  Calendar,
-  Bell,
-  Settings,
-  Search,
-  ChevronRight,
-  Plus,
-  MoreVertical
+  BellRing, BookOpen, Users, GraduationCap, CheckCircle, FileText, LayoutDashboard, TrendingUp, Calendar, Clock, Info, ChevronRight, FolderOpen, Download, Share, Bookmark,
+  Shield,
+  Sparkles,
+  PenTool,
+  Video,
+  Headphones,
+  Layers,
+  FileSpreadsheet,
+  BarChart3,
+  Megaphone,
+  Award,
+  UserPlus,
+  Zap,
+  AlertCircle,
+  Star
 } from "lucide-react"
 
-export default function Dashboard() {  // Changed from CleanDashboardUI to Dashboard
+
+export default function AdminDashboardPage() {
+
+
+
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white border-b">
-        <div className="px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-              <p className="text-sm text-gray-600">Welcome back</p>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  className="pl-10 pr-4 py-2 border rounded-lg w-64"
-                />
+    <div  className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
+      
+      <main className="flex-1 p-4 sm:p-6 lg:p-8">
+        
+        {/* Welcome Section */}
+        <div className="mb-10">
+          {/* Minimal Dashboard Tag */}
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-200/50 mb-6">
+            <LayoutDashboard className="h-5 w-5 text-indigo-600" />
+            <span className="text-sm font-semibold text-blue-700">Dashboard Hub</span>
+            <TrendingUp className="h-4 w-4 text-emerald-500" />
+          </div>
+          <div className="relative">
+            <div
+              className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6"
+            >
+              {/* Left Header */}
+              <div className="relative flex items-start gap-4">
+
+                {/* Blue/Cyan Strip */}
+                <div className="relative">
+                  <div className="w-3 h-10 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full shadow-lg shadow-cyan-400/30"></div>
+                  <Sparkles className="absolute -top-1 -right-1 h-4 w-4 text-cyan-400 animate-pulse" />
+                </div>
+
+                {/* Organization Text */}
+                <div className="relative">
+                  <h1 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent bg-[length:200%] animate-gradient">
+                    {"Zyra Academy"}
+                  </h1>
+                  <div className="flex items-center gap-3 -mt-3 -ml-7">
+                    <Shield className="h-4 w-4 text-cyan-500" />
+                    <p className="text-gray-600 text-sm relative top-[6px]">
+                      Welcome, <span className="font-semibold text-gray-900">{"Administrator"}</span>
+                    </p>
+                    <div className="w-1 h-1 bg-gray-300 rounded-full"></div>
+                    <span className="text-xs font-medium px-2 py-1 bg-cyan-100 text-cyan-700 rounded-xl">
+                      Admin
+                    </span>
+                  </div>
+                </div>
               </div>
-              <button className="p-2 hover:bg-gray-100 rounded-lg">
-                <Bell className="h-5 w-5" />
-              </button>
-              <button className="p-2 hover:bg-gray-100 rounded-lg">
-                <Settings className="h-5 w-5" />
-              </button>
+
+
+              {/* Right Header Controls */}
+              <div className="flex flex-col sm:flex-row items-stretch gap-4">
+                <div className="hidden lg:flex items-center gap-3 bg-white rounded-xl border border-gray-100 px-4 py-3 shadow-sm">
+                  <Clock className="h-4 w-4 text-cyan-600" />
+                  <span className="text-sm text-gray-600">{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                  <div className="h-4 w-px bg-gray-200"></div>
+                  <Calendar className="h-4 w-4 text-blue-600" />
+                  <span className="text-sm text-gray-600">{new Date().getDate()} {new Date().toLocaleDateString('en-US', { month: 'short' })}</span>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
-      </div>
 
-      <div className="p-6">
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {/* Stat Card 1 */}
-          <div className="bg-white p-6 rounded-xl border shadow-sm">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">Total Clients</p>
-                <h3 className="text-2xl font-bold mt-2">1,234</h3>
-              </div>
-              <div className="p-3 bg-blue-100 rounded-lg">
-                <Users className="h-6 w-6 text-blue-600" />
+        {/* Animated Stats Grid - Rectangular Bars */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
+          {[].map((stat: any, idx: any) => (
+            <div key={idx} className="relative group">
+              {/* Thin rectangular card */}
+              <div
+                className={`relative flex items-center justify-between overflow-hidden rounded-xl bg-white border border-gray-200 p-4
+                shadow-md shadow-gray-200/20 backdrop-blur-sm
+                group-hover:shadow-lg group-hover:shadow-cyan-100/20 transition-all duration-300`}
+              >
+                {/* Left: Icon + Title */}
+                <div className="flex items-center gap-3">
+                  <div className={`p-2 rounded-xl text-cyan-600 shadow-sm ${stat.accent}/20`}>
+                    {stat.icon}
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-xs font-medium text-black">{stat.title}</p>
+                    <div className="mt-1 w-12 h-1 rounded-full bg-gradient-to-r from-cyan-700 to-blue-500 opacity-40" />
+                  </div>
+                </div>
+
+                {/* Right: Value + Change */}
+                <div className="flex items-center gap-2">
+                  <h3 className="text-2xl font-bold text-gray-900">{stat.value}</h3>
+
+                </div>
               </div>
             </div>
-            <div className="flex items-center gap-2 mt-4">
-              <TrendingUp className="h-4 w-4 text-green-500" />
-              <span className="text-sm text-green-600">+12% from last month</span>
+          ))}
+        </div>
+
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Quick Actions - Moved to top of left column */}
+            <div className="bg-white rounded-xl border border-gray-100 px-6 pt-3 pb-4 shadow-lg shadow-black/5">
+              <div className="flex items-center justify-between mb-4">
+                <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                  Today's Activity
+                </h2>
+                <button className="text-sm font-medium text-cyan-600 hover:text-cyan-700 flex items-center gap-2">
+                  View All
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+
+              <div className="grid grid-col-2 sm:grid-cols-3 items-center gap-2">
+                {[].map((action: any, index: number) => (
+                  <div
+                    key={index}
+                    onClick={action.onClick}
+                    className="p-2 rounded-xl border border-gray-100 hover:border-gray-200 hover:shadow-sm transition-all group cursor-pointer"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className={`p-2 rounded-lg ${action.bgColor}`}>
+                        <div className={action.textColor}>
+                          {action.icon}
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-semibold text-gray-900 truncate">{action.label}</h4>
+                        <div className="flex items-center justify-between text-xs text-gray-500">
+                          <span>{action.description}</span>
+                          <ChevronRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Stat Card 2 */}
-          <div className="bg-white p-6 rounded-xl border shadow-sm">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">Active Projects</p>
-                <h3 className="text-2xl font-bold mt-2">48</h3>
-              </div>
-              <div className="p-3 bg-green-100 rounded-lg">
-                <Briefcase className="h-6 w-6 text-green-600" />
-              </div>
-            </div>
-            <div className="flex items-center gap-2 mt-4">
-              <TrendingUp className="h-4 w-4 text-green-500" />
-              <span className="text-sm text-green-600">+8% from last month</span>
-            </div>
-          </div>
+          {/* Right Column - Desktop Only */}
+          <div className="space-y-8">
+            {/* Upcoming Events */}
+            <div className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg shadow-black/5">
+              <div className="flex items-center justify-between ">
+                <div>
+                  <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                    Upcoming Dates
+                  </h2>
+                  <p className="text-sm text-gray-600 mb-3">Stay informed</p>
+                </div>
 
-          {/* Stat Card 3 */}
-          <div className="bg-white p-6 rounded-xl border shadow-sm">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">Revenue</p>
-                <h3 className="text-2xl font-bold mt-2">$89,420</h3>
+                <button
+                  className="text-sm font-medium text-cyan-600 hover:text-cyan-700 flex items-center gap-2"
+                >
+                  View all
+                  <ChevronRight className="h-4 w-4" />
+                </button>
               </div>
-              <div className="p-3 bg-purple-100 rounded-lg">
-                <TrendingUp className="h-6 w-6 text-purple-600" />
-              </div>
-            </div>
-            <div className="flex items-center gap-2 mt-4">
-              <TrendingUp className="h-4 w-4 text-green-500" />
-              <span className="text-sm text-green-600">+24% from last month</span>
-            </div>
-          </div>
 
-          {/* Stat Card 4 */}
-          <div className="bg-white p-6 rounded-xl border shadow-sm">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">Pending Tasks</p>
-                <h3 className="text-2xl font-bold mt-2">16</h3>
-              </div>
-              <div className="p-3 bg-amber-100 rounded-lg">
-                <FileText className="h-6 w-6 text-amber-600" />
-              </div>
-            </div>
-            <div className="flex items-center gap-2 mt-4">
-              <TrendingUp className="h-4 w-4 text-red-500" />
-              <span className="text-sm text-red-600">-2% from last month</span>
+              {[
+                {
+                  id: 1,
+                  title: "Parent-Teacher Meeting",
+                  date: "28 Feb",
+                  time: "9AM-3PM",
+                  type: "ptm",
+                  icon: <Users className="h-4 w-4 text-white" />
+                },
+                {
+                  id: 2,
+                  title: "Annual Science Fair",
+                  date: "15 Mar",
+                  time: "10AM-4PM",
+                  type: "fair",
+                  icon: <Award className="h-4 w-4 text-white" />
+                },
+                {
+                  id: 3,
+                  title: "Faculty Development",
+                  date: "22 Mar",
+                  time: "2PM-5PM",
+                  type: "workshop",
+                  icon: <GraduationCap className="h-4 w-4 text-white" />
+                }
+              ].map((event, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-between  p-3 rounded-xl border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 cursor-pointer group"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 text-lg sm:text-xl bg-transparent rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center justify-center font-semibold shadow-md">
+                      {event.date.split(' ')[0]}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-semibold text-gray-900 text-sm">{event.title}</span>
+                      <span className="text-xs text-gray-500">
+                        {event.date} • {event.time}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center">
+                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-cyan-600 transition-colors" />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-
-        {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left Column - Recent Activity */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Recent Clients */}
-            <div className="bg-white rounded-xl border shadow-sm">
-              <div className="p-6 border-b">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-semibold">Recent Clients</h2>
-                  <button className="text-sm text-blue-600 hover:text-blue-700 flex items-center gap-1">
-                    View all <ChevronRight className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-              <div className="p-6">
-                {/* Client Row 1 */}
-                <div className="flex items-center justify-between py-3 border-b">
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 bg-blue-100 rounded-full flex items-center justify-center">
-                      <span className="font-semibold text-blue-600">JD</span>
-                    </div>
-                    <div>
-                      <p className="font-medium">John Doe</p>
-                      <p className="text-sm text-gray-600">john@example.com</p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-medium">$2,500</p>
-                    <p className="text-sm text-green-600">Active</p>
-                  </div>
-                </div>
-
-                {/* Client Row 2 */}
-                <div className="flex items-center justify-between py-3 border-b">
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 bg-green-100 rounded-full flex items-center justify-center">
-                      <span className="font-semibold text-green-600">SA</span>
-                    </div>
-                    <div>
-                      <p className="font-medium">Sarah Adams</p>
-                      <p className="text-sm text-gray-600">sarah@example.com</p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-medium">$4,200</p>
-                    <p className="text-sm text-green-600">Active</p>
-                  </div>
-                </div>
-
-                {/* Client Row 3 */}
-                <div className="flex items-center justify-between py-3">
-                  <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 bg-purple-100 rounded-full flex items-center justify-center">
-                      <span className="font-semibold text-purple-600">MJ</span>
-                    </div>
-                    <div>
-                      <p className="font-medium">Mike Johnson</p>
-                      <p className="text-sm text-gray-600">mike@example.com</p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-medium">$1,800</p>
-                    <p className="text-sm text-gray-600">Pending</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Projects */}
-            <div className="bg-white rounded-xl border shadow-sm">
-              <div className="p-6 border-b">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-semibold">Active Projects</h2>
-                  <button className="flex items-center gap-2 text-sm bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                    <Plus className="h-4 w-4" /> Add Project
-                  </button>
-                </div>
-              </div>
-              <div className="p-6">
-                {/* Project Card 1 */}
-                <div className="border rounded-lg p-4 mb-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-semibold">Website Redesign</h3>
-                    <div className="flex items-center gap-2">
-                      <span className="px-2 py-1 bg-blue-100 text-blue-600 rounded text-sm">
-                        75%
-                      </span>
-                      <button>
-                        <MoreVertical className="h-5 w-5 text-gray-400" />
-                      </button>
-                    </div>
-                  </div>
-                  <p className="text-sm text-gray-600 mb-4">Complete redesign of company website with modern UI/UX</p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="flex -space-x-2">
-                        <div className="h-8 w-8 bg-blue-100 rounded-full border-2 border-white"></div>
-                        <div className="h-8 w-8 bg-green-100 rounded-full border-2 border-white"></div>
-                        <div className="h-8 w-8 bg-purple-100 rounded-full border-2 border-white"></div>
-                      </div>
-                      <span className="text-sm text-gray-500">Due: 15 Mar</span>
-                    </div>
-                    <span className="text-sm font-medium">$12,500</span>
-                  </div>
-                </div>
-
-                {/* Project Card 2 */}
-                <div className="border rounded-lg p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-semibold">Mobile App Development</h3>
-                    <div className="flex items-center gap-2">
-                      <span className="px-2 py-1 bg-green-100 text-green-600 rounded text-sm">
-                        45%
-                      </span>
-                      <button>
-                        <MoreVertical className="h-5 w-5 text-gray-400" />
-                      </button>
-                    </div>
-                  </div>
-                  <p className="text-sm text-gray-600 mb-4">iOS and Android app for customer management</p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="flex -space-x-2">
-                        <div className="h-8 w-8 bg-amber-100 rounded-full border-2 border-white"></div>
-                        <div className="h-8 w-8 bg-red-100 rounded-full border-2 border-white"></div>
-                      </div>
-                      <span className="text-sm text-gray-500">Due: 30 Apr</span>
-                    </div>
-                    <span className="text-sm font-medium">$25,000</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column */}
-          <div className="space-y-6">
-            {/* Calendar */}
-            <div className="bg-white rounded-xl border shadow-sm">
-              <div className="p-6 border-b">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-lg font-semibold">Calendar</h2>
-                  <Calendar className="h-5 w-5 text-gray-400" />
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="text-center mb-6">
-                  <p className="text-2xl font-bold">March 2024</p>
-                </div>
-                <div className="grid grid-cols-7 gap-2 mb-4">
-                  {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, i) => (
-                    <div key={i} className="text-center text-sm text-gray-500 font-medium">
-                      {day}
-                    </div>
-                  ))}
-                </div>
-                <div className="grid grid-cols-7 gap-2">
-                  {Array.from({ length: 31 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className={`h-10 flex items-center justify-center rounded-lg text-sm ${i + 1 === 15
-                        ? 'bg-blue-600 text-white'
-                        : 'hover:bg-gray-100'
-                        }`}
-                    >
-                      {i + 1}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Actions */}
-            <div className="bg-white rounded-xl border shadow-sm">
-              <div className="p-6 border-b">
-                <h2 className="text-lg font-semibold">Quick Actions</h2>
-              </div>
-              <div className="p-6 space-y-4">
-                <button className="w-full flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50">
-                  <div className="p-2 bg-blue-100 rounded-lg">
-                    <Users className="h-5 w-5 text-blue-600" />
-                  </div>
-                  <span className="font-medium">Add New Client</span>
-                </button>
-                <button className="w-full flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50">
-                  <div className="p-2 bg-green-100 rounded-lg">
-                    <FileText className="h-5 w-5 text-green-600" />
-                  </div>
-                  <span className="font-medium">Create Invoice</span>
-                </button>
-                <button className="w-full flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50">
-                  <div className="p-2 bg-purple-100 rounded-lg">
-                    <Briefcase className="h-5 w-5 text-purple-600" />
-                  </div>
-                  <span className="font-medium">New Project</span>
-                </button>
-                <button className="w-full flex items-center gap-3 p-3 border rounded-lg hover:bg-gray-50">
-                  <div className="p-2 bg-amber-100 rounded-lg">
-                    <Bell className="h-5 w-5 text-amber-600" />
-                  </div>
-                  <span className="font-medium">Send Notification</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Recent Activity */}
-            <div className="bg-white rounded-xl border shadow-sm">
-              <div className="p-6 border-b">
-                <h2 className="text-lg font-semibold">Recent Activity</h2>
-              </div>
-              <div className="p-6 space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="h-8 w-8 bg-green-100 rounded-full flex items-center justify-center mt-1">
-                    <Users className="h-4 w-4 text-green-600" />
-                  </div>
-                  <div>
-                    <p className="font-medium">New client added</p>
-                    <p className="text-sm text-gray-600">John Doe was added to the system</p>
-                    <p className="text-xs text-gray-500">2 hours ago</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="h-8 w-8 bg-blue-100 rounded-full flex items-center justify-center mt-1">
-                    <FileText className="h-4 w-4 text-blue-600" />
-                  </div>
-                  <div>
-                    <p className="font-medium">Invoice sent</p>
-                    <p className="text-sm text-gray-600">Invoice #INV-2024-001 was sent</p>
-                    <p className="text-xs text-gray-500">4 hours ago</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="h-8 w-8 bg-purple-100 rounded-full flex items-center justify-center mt-1">
-                    <Briefcase className="h-4 w-4 text-purple-600" />
-                  </div>
-                  <div>
-                    <p className="font-medium">Project updated</p>
-                    <p className="text-sm text-gray-600">Website redesign progress updated to 75%</p>
-                    <p className="text-xs text-gray-500">1 day ago</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </main >
     </div>
   )
 }
+
+
+// Helper functions (add these inside your dashboard component)
+const getPriorityColor = (priority: string, type: 'border' | 'bg' = 'border') => {
+  const colors = {
+    critical: type === 'border' ? 'border-red-200 bg-red-50 text-red-700' : 'bg-red-500',
+    high: type === 'border' ? 'border-amber-200 bg-amber-50 text-amber-700' : 'bg-amber-500',
+    normal: type === 'border' ? 'border-blue-200 bg-blue-50 text-blue-700' : 'bg-blue-500',
+    low: type === 'border' ? 'border-slate-200 bg-slate-50 text-slate-700' : 'bg-slate-500',
+  };
+  return colors[priority as keyof typeof colors] || colors.normal;
+};
+
+const getTargetColor = (target: string) => {
+  const colors = {
+    students: 'border-teal-200 bg-teal-50 text-teal-700',
+    teachers: 'border-violet-200 bg-violet-50 text-violet-700',
+    'section-Head': 'border-pink-200 bg-pink-50 text-pink-700',
+    all: 'border-cyan-200 bg-cyan-50 text-cyan-700',
+  };
+  return colors[target as keyof typeof colors] || colors.all;
+};

@@ -15,15 +15,15 @@ import ViewProject from "../pages/ViewProject";
 import Dashboard from "../pages/Dashboard";
 export default function AppRouter() {
     return (
-        <BrowserRouter>
             <Routes>
                 {/* Public */}
-                {/* <Route path="/" element={<Home />} /> */}
+                <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/auth/login" element={<Login />} />
                 <Route path="/auth/signup" element={<Signup />} />
 
-                <Route path="/" element={<Dashboard />} />
+                {/* <Route path="/dashboard/:userid" element={<Dashboard />} /> */}
+                <Route path="/dashboard" element={<Dashboard />} />
 
                 {/* Clients */}
                 <Route path="clients" element={<ViewClientsPage />} />
@@ -40,6 +40,5 @@ export default function AppRouter() {
                 <Route path="projects/add" element={<AddProject />} />
                 <Route path="projects/:projectId" element={<ViewProject />} />
             </Routes>
-        </BrowserRouter >
     );
 }
