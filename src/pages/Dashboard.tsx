@@ -77,7 +77,7 @@ export default function AdminDashboardPage() {
       label: "Add New Lead",
       description: "Create contact",
       icon: <UserPlus className="h-5 w-5" />,
-      bgColor: "bg-cyan-50",
+      bgColor: "bg-cyan-100",
       textColor: "text-cyan-600",
       onClick: () => console.log("Add lead")
     },
@@ -85,7 +85,7 @@ export default function AdminDashboardPage() {
       label: "Add New Client",
       description: "Create client",
       icon: <UserPlus className="h-5 w-5" />,
-      bgColor: "bg-emerald-50",
+      bgColor: "bg-emerald-100",
       textColor: "text-emerald-600",
       onClick: () => console.log("Add lead")
     },
@@ -93,7 +93,7 @@ export default function AdminDashboardPage() {
       label: "Schedule Dates",
       description: "Plan follow-up",
       icon: <Calendar className="h-5 w-5" />,
-      bgColor: "bg-blue-50",
+      bgColor: "bg-blue-100",
       textColor: "text-blue-600",
       onClick: () => console.log("Schedule")
     },
@@ -101,7 +101,7 @@ export default function AdminDashboardPage() {
       label: "Create Project",
       description: "New initiative",
       icon: <FolderOpen className="h-5 w-5" />,
-      bgColor: "bg-purple-50",
+      bgColor: "bg-purple-100",
       textColor: "text-purple-600",
       onClick: () => console.log("Create project")
     },
@@ -184,7 +184,7 @@ export default function AdminDashboardPage() {
                   </div>
                   <div className="flex flex-col">
                     <p className="text-xs font-medium text-black">{stat.title}</p>
-                    <div className="mt-1 w-12 h-1 rounded-full bg-gradient-to-r from-cyan-700 to-blue-500 opacity-40" />
+                    <div className="mt-1 w-12 h-1 rounded-full bg-gradient-to-r from-cyan-400 to-blue-800 opacity-40" />
                   </div>
                 </div>
 
@@ -204,13 +204,16 @@ export default function AdminDashboardPage() {
           <div className="lg:col-span-2 space-y-8">
             {/* Quick Actions - Balanced Compact */}
             <div className="bg-white rounded-xl border border-gray-100 p-5 shadow-lg shadow-black/5">
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-3 sm:gap-0">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg">
                     <Zap className="h-5 w-5 text-white" />
                   </div>
                   <div>
-                    <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-lg font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                    <h2
+                      style={{ fontFamily: "'Baloo 2', cursive" }}
+                      className="text-lg font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent"
+                    >
                       Quick Actions
                     </h2>
                     <p className="text-sm text-gray-600">Frequent tasks at a glance</p>
@@ -218,7 +221,7 @@ export default function AdminDashboardPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                 {quickActions.map((action, index) => (
                   <button
                     key={index}
@@ -226,9 +229,7 @@ export default function AdminDashboardPage() {
                     className="flex flex-row items-center p-3 rounded-xl border border-gray-200 hover:border-cyan-300 hover:shadow-sm transition-all duration-200 group cursor-pointer bg-white hover:bg-cyan-50/30"
                   >
                     <div className={`p-2 rounded-lg ${action.bgColor} mr-3`}>
-                      <div className={` ${action.textColor}`}>
-                        {action.icon}
-                      </div>
+                      <div className={`${action.textColor}`}>{action.icon}</div>
                     </div>
                     <div className="flex flex-col items-start flex-1">
                       <h4 className="font-semibold text-gray-900 text-sm mb-0.5">{action.label}</h4>
@@ -238,6 +239,7 @@ export default function AdminDashboardPage() {
                 ))}
               </div>
             </div>
+
             <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-lg shadow-black/5">
               <div className="flex items-center justify-between mb-4">
                 <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
@@ -270,55 +272,101 @@ export default function AdminDashboardPage() {
                 ))}
               </div>
             </div>
-            {/* Projects */}
-            <div className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg shadow-black/5">
-              <div className="flex items-center justify-between ">
-                <div>
-                  <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                    Active Projects
-                  </h2>
-                  <p className="text-sm text-gray-600 mb-3">Track ongoing initiatives and progress</p>                </div>
-
-                <button
-                  className="text-sm font-medium text-cyan-600 hover:text-cyan-700 flex items-center gap-2"
-                >
+            {/* Active Projects - Enhanced */}
+            <div className="bg-white/90 backdrop-blur-sm rounded-xl border border-gray-300/50 p-6 shadow-xl shadow-gray-300/10">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="p-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl shadow-md">
+                    <FolderOpen className="h-5 w-5 text-white" />
+                  </div>
+                  <div>
+                    <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                      Active Projects
+                    </h2>
+                    <p className="text-sm text-gray-600">Track ongoing initiatives and progress</p>
+                  </div>
+                </div>
+                <button className="text-sm font-medium text-cyan-600 hover:text-cyan-700 flex items-center gap-2 group">
                   View all
-                  <ChevronRight className="h-4 w-4" />
+                  <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
 
-              {[
-                {
-                  id: 1,
-                  title: "Parent-Teacher Meeting",
-                  date: "28 Feb",
-                  time: "9AM-3PM",
-                  type: "ptm",
-                  icon: <Users className="h-4 w-4 text-white" />
-                },
-
-              ].map((event, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center justify-between  p-3 rounded-xl border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 cursor-pointer group"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 text-lg sm:text-xl bg-transparent rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center justify-center font-semibold shadow-md">
-                      {event.date.split(' ')[0]}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {[
+                  {
+                    id: 1,
+                    title: "Parent-Teacher Meeting",
+                    date: "28 Feb",
+                    time: "9AM-3PM",
+                    progress: 85,
+                    members: 12,
+                    icon: <Users className="h-4 w-4" />
+                  },
+                  {
+                    id: 2,
+                    title: "Annual Conference",
+                    date: "15 Mar",
+                    time: "10AM-6PM",
+                    progress: 60,
+                    members: 24,
+                    icon: <Calendar className="h-4 w-4" />
+                  },
+                  {
+                    id: 3,
+                    title: "Product Launch",
+                    date: "30 Mar",
+                    time: "2PM-5PM",
+                    progress: 45,
+                    members: 8,
+                    icon: <Megaphone className="h-4 w-4" />
+                  },
+                  {
+                    id: 4,
+                    title: "Team Workshop",
+                    date: "5 Apr",
+                    time: "11AM-4PM",
+                    progress: 30,
+                    members: 16,
+                    icon: <GraduationCap className="h-4 w-4" />
+                  },
+                ].map((project, idx) => (
+                  <div
+                    key={idx}
+                    className="group relative overflow-hidden bg-white border border-gray-300/50 rounded-xl p-4
+                    hover:border-cyan-300 hover:shadow-lg hover:shadow-cyan-100/30
+                    transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 bg-gradient-to-r from-cyan-100 to-blue-100 rounded-lg">
+                          <div className="text-cyan-600">{project.icon}</div>
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900 text-sm">{project.title}</h3>
+                          <p className="text-xs text-gray-500">{project.date} • {project.time}</p>
+                        </div>
+                      </div>
+                      <div className="text-xs font-medium px-2 py-1 bg-cyan-100 text-cyan-700 rounded-full">
+                        {project.members} members
+                      </div>
                     </div>
-                    <div className="flex flex-col">
-                      <span className="font-semibold text-gray-900 text-sm">{event.title}</span>
-                      <span className="text-xs text-gray-500">
-                        {event.date} • {event.time}
-                      </span>
+
+                    <div className="mb-2">
+                      <div className="flex justify-between text-xs text-gray-600 mb-1">
+                        <span>Progress</span>
+                        <span className="font-medium">{project.progress}%</span>
+                      </div>
+                      <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"
+                          style={{ width: `${project.progress}%` }}
+                        ></div>
+                      </div>
                     </div>
                   </div>
-
-                  <div className="flex items-center">
-                    <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-cyan-600 transition-colors" />
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
