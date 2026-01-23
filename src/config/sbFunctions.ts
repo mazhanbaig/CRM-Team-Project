@@ -1,13 +1,13 @@
 import { supabase } from "./sbConfig";
 
 const handleGoogleSignUp = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
+    const { data,error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-            redirectTo: `${window.location.origin}/auth/callback`,
+            redirectTo: `${window.location.origin}/dashboard`,
         },
     });
-    if (error) throw error;
+    return {data,error}
 };
 
 
