@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Login from "../pages/Login";
@@ -24,6 +24,8 @@ export default function AppRouter() {
 
                 {/* <Route path="/dashboard/:userid" element={<Dashboard />} /> */}
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/leads" element={<AddLead />} />
+                <Route path="/clients" element={<AddClientPage />} />
 
                 {/* Clients */}
                 <Route path="clients" element={<ViewClientsPage />} />

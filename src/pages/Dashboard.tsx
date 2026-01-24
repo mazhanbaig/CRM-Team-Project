@@ -16,9 +16,12 @@ import {
   Star
 } from "lucide-react"
 import React from "react"
+import { useNavigate } from "react-router-dom";
+
 
 
 export default function AdminDashboardPage() {
+const navigate = useNavigate();
 
   // Add this data array at the top
   const statsData = [
@@ -79,7 +82,8 @@ export default function AdminDashboardPage() {
       icon: <UserPlus className="h-5 w-5" />,
       bgColor: "bg-cyan-50",
       textColor: "text-cyan-600",
-      onClick: () => console.log("Add lead")
+      // onClick: () => console.log("Add lead")
+          onClick: () => navigate("/leads") // 👈 yahan page change hoga
     },
     {
       label: "Add New Client",
@@ -87,7 +91,8 @@ export default function AdminDashboardPage() {
       icon: <UserPlus className="h-5 w-5" />,
       bgColor: "bg-emerald-50",
       textColor: "text-emerald-600",
-      onClick: () => console.log("Add lead")
+      // onClick: () => console.log("Add lead")
+          onClick: () => navigate("/clients") // 👈 yahan page change hoga
     },
     {
       label: "Schedule Dates",
@@ -108,14 +113,14 @@ export default function AdminDashboardPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 via-white to-blue-50/30">
 
       <main className="flex-1 p-4 sm:p-6 lg:p-8">
 
         {/* Welcome Section */}
         <div className="mb-10">
           {/* Minimal Dashboard Tag */}
-          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-cyan-500/10 border border-blue-200/50 mb-6">
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-linear-to-r from-blue-500/10 to-cyan-500/10 border border-blue-200/50 mb-6">
             <LayoutDashboard className="h-5 w-5 text-indigo-600" />
             <span className="text-sm font-semibold text-blue-700">Dashboard Hub</span>
             <TrendingUp className="h-4 w-4 text-emerald-500" />
@@ -129,12 +134,12 @@ export default function AdminDashboardPage() {
 
                 {/* Blue/Cyan Strip */}
                 <div className="relative">
-                  <div className="w-3 h-10 bg-gradient-to-b from-cyan-400 to-blue-500 rounded-full shadow-lg shadow-cyan-400/30"></div>
+                  <div className="w-3 h-10 bg-linear-to-b from-cyan-400 to-blue-500 rounded-full shadow-lg shadow-cyan-400/30"></div>
                 </div>
 
                 {/* Organization Text */}
                 <div className="relative">
-                  <h1 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent bg-[length:200%] animate-gradient">
+                  <h1 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-3xl lg:text-4xl font-bold bg-linear-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent bg-size-[200%] animate-gradient">
                     Cliento
                   </h1>
                   <div className="flex items-center gap-3 ">
@@ -184,7 +189,7 @@ export default function AdminDashboardPage() {
                   </div>
                   <div className="flex flex-col">
                     <p className="text-xs font-medium text-black">{stat.title}</p>
-                    <div className="mt-1 w-12 h-1 rounded-full bg-gradient-to-r from-cyan-700 to-blue-500 opacity-40" />
+                    <div className="mt-1 w-12 h-1 rounded-full bg-linear-to-r from-cyan-700 to-blue-500 opacity-40" />
                   </div>
                 </div>
 
@@ -206,18 +211,18 @@ export default function AdminDashboardPage() {
             <div className="bg-white rounded-xl border border-gray-100 p-5 shadow-lg shadow-black/5">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg">
+                  <div className="p-2 bg-linear-to-r from-cyan-500 to-blue-500 rounded-lg">
                     <Zap className="h-5 w-5 text-white" />
                   </div>
                   <div>
-                    <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-lg font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                    <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-lg font-bold bg-linear-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
                       Quick Actions
                     </h2>
                     <p className="text-sm text-gray-600">Frequent tasks at a glance</p>
                   </div>
                 </div>
               </div>
-
+            
               <div className="grid grid-cols-3 gap-3">
                 {quickActions.map((action, index) => (
                   <button
@@ -231,16 +236,17 @@ export default function AdminDashboardPage() {
                       </div>
                     </div>
                     <div className="flex flex-col items-start flex-1">
-                      <h4 className="font-semibold text-gray-900 text-sm mb-0.5">{action.label}</h4>
+                      <h4 className="font-semibold text-gray-900 text-sm mb-0.5">{action.label} </h4>
                       <p className="text-xs text-gray-500 text-left">{action.description}</p>
                     </div>
                   </button>
                 ))}
               </div>
             </div>
+            
             <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-lg shadow-black/5">
               <div className="flex items-center justify-between mb-4">
-                <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-linear-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
                   Recent Activity
                 </h2>
                 <button className="text-sm font-medium text-cyan-600 hover:text-cyan-700 flex items-center gap-2">
@@ -274,7 +280,7 @@ export default function AdminDashboardPage() {
             <div className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg shadow-black/5">
               <div className="flex items-center justify-between ">
                 <div>
-                  <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                  <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-linear-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
                     Active Projects
                   </h2>
                   <p className="text-sm text-gray-600 mb-3">Track ongoing initiatives and progress</p>                </div>
@@ -303,7 +309,7 @@ export default function AdminDashboardPage() {
                   className="flex items-center justify-between  p-3 rounded-xl border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 cursor-pointer group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 text-lg sm:text-xl bg-transparent rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center justify-center font-semibold shadow-md">
+                    <div className="w-10 h-10 text-lg sm:text-xl bg-transparent rounded-lg bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center justify-center font-semibold shadow-md">
                       {event.date.split(' ')[0]}
                     </div>
                     <div className="flex flex-col">
@@ -328,7 +334,7 @@ export default function AdminDashboardPage() {
             <div className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg shadow-black/5">
               <div className="flex items-center justify-between ">
                 <div>
-                  <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                  <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-linear-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
                     Upcoming Dates
                   </h2>
                   <p className="text-sm text-gray-600 mb-3">Stay informed</p>
@@ -358,7 +364,7 @@ export default function AdminDashboardPage() {
                   className="flex items-center justify-between  px-3 py-2 rounded-xl border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 cursor-pointer group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 text-lg sm:text-xl bg-transparent rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center justify-center font-semibold shadow-md">
+                    <div className="w-10 h-10 text-lg sm:text-xl bg-transparent rounded-lg bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center justify-center font-semibold shadow-md">
                       {event.date.split(' ')[0]}
                     </div>
                     <div className="flex flex-col">
@@ -379,7 +385,7 @@ export default function AdminDashboardPage() {
             <div className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg shadow-black/5">
               <div className="flex items-center justify-between ">
                 <div>
-                  <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                  <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-linear-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
                     Trusted Partners
                   </h2>
                   <p className="text-sm text-gray-600 mb-3">Innovators who choose our platform</p>
@@ -409,7 +415,7 @@ export default function AdminDashboardPage() {
                   className="flex items-center justify-between px-3 py-2 rounded-xl border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 cursor-pointer group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 text-lg sm:text-xl bg-transparent rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center justify-center font-semibold shadow-md">
+                    <div className="w-10 h-10 text-lg sm:text-xl bg-transparent rounded-lg bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center justify-center font-semibold shadow-md">
                       {event.date.split(' ')[0]}
                     </div>
                     <div className="flex flex-col">
@@ -430,7 +436,7 @@ export default function AdminDashboardPage() {
             <div className="bg-white rounded-xl border border-gray-100 p-4 shadow-lg shadow-black/5">
               <div className="flex items-center justify-between ">
                 <div>
-                  <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                  <h2 style={{ fontFamily: "'Baloo 2', cursive" }} className="text-xl font-bold bg-linear-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
                     Hot Leads
                   </h2>
                   <p className="text-sm text-gray-600 mb-3">High-priority leads needing attention</p>
@@ -460,7 +466,7 @@ export default function AdminDashboardPage() {
                   className="flex items-center justify-between px-3 py-2 rounded-xl border border-gray-200 hover:border-cyan-300 hover:shadow-lg transition-all duration-300 cursor-pointer group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 text-lg sm:text-xl bg-transparent rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center justify-center font-semibold shadow-md">
+                    <div className="w-10 h-10 text-lg sm:text-xl bg-transparent rounded-lg bg-linear-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center justify-center font-semibold shadow-md">
                       {event.date.split(' ')[0]}
                     </div>
                     <div className="flex flex-col">

@@ -65,7 +65,7 @@ export default function Button({
                 ${sizes[size]}
                 ${disabled ? "opacity-50 cursor-not-allowed hover:translate-y-0 before:opacity-30" : ""}
                 ${variant === 'thin-gradient-border' ?
-                    'group before:absolute before:-inset-[2px] before:rounded-[13.5px] before:bg-gradient-to-r before:from-blue-500 before:to-cyan-500  before:content-[""] before:-z-10' :
+                    'group before:absolute before:-inset-0.5 before:rounded-[13.5px] before:bg-linear-to-r before:from-blue-500 before:to-cyan-500  before:content-[""] before:-z-10' :
                     ''}
                 ${classNameC}
                 `}
